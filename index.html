@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Module Example</title>
+</head>
+<body>
+    <h1>Check the console for output</h1>
+    <script type="module">
+        import Matrix from './Matrix.js';
+
+        const m = new Matrix(2, 3);
+        const m2 = new Matrix(2, 3);
+        
+        
+        m.rand();
+        m2.rand();
+
+        log(m);
+        log(m2);
+        // m.add(5);
+        // m.mult(3);
+
+        m.add(m2);
+        log(m);
+
+        function log(m) {
+            // console.log(JSON.stringify(m.matrix));
+            console.table(m.matrix);
+        }
+
+
+</script>
+</body>
+</html>
