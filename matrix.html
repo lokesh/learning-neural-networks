@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Module Example</title>
+</head>
+<body>
+    <h1>Check the console for output</h1>
+    <script type="module">
+        import Matrix from './Matrix.js';
+        import NeuralNetwork from './NeuralNetwork.js';
+
+        let m1 = new Matrix(2, 3);
+        let m2 = new Matrix(3, 2);
+        
+        m1.randomize(0, 3);
+        m2.randomize(0, 3);
+
+        log(m1);
+        m1.map((data) => data + 100);
+log(m1);
+        // m1 = Matrix.transpose(m1);
+        // log(m1);
+        // log(m2);
+        // m.add(5);
+        // m.mult(3);
+
+        
+
+        // let foo = Matrix.mult(m1, m2);
+        // console.log('-----------')
+        // console.log('DOT PRODUCT')
+        // log(foo);
+        // console.log(foo);
+        // console.log('after');
+        // log(foo);
+
+        function log(m) {
+            // console.log(JSON.stringify(m.matrix));
+            console.table(m.data);
+        }
+
+
+</script>
+</body>
+</html>

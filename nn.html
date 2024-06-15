@@ -3,31 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matrix Module Example</title>
+    <title>Neural Network Example</title>
 </head>
 <body>
     <h1>Check the console for output</h1>
     <script type="module">
         import Matrix from './Matrix.js';
+        import NeuralNetwork from './NeuralNetwork.js';
 
-        const m = new Matrix(2, 3);
-        const m2 = new Matrix(2, 3);
-        
-        
-        m.rand();
-        m2.rand();
+        let nn = new NeuralNetwork(2, 2, 1);
 
-        log(m);
-        log(m2);
-        // m.add(5);
-        // m.mult(3);
+        let inputs = [1, 0, -5];
 
-        m.add(m2);
-        log(m);
+        let output = nn.feedForward(inputs);
 
-        function log(m) {
+        console.log(output);
+
+
+        function logData(m) {
             // console.log(JSON.stringify(m.matrix));
-            console.table(m.matrix);
+            console.table(m.data);
         }
 
 
