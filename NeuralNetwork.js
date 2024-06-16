@@ -29,6 +29,11 @@ class NeuralNetwork {
         this.biasO.randomize();
     }
 
+    /**
+     * 
+     * @param {number[]} inputsArray 
+     * @returns 
+     */
     feedForward(inputsArray) {
         // 1. Create vector (aka single column matrix) from passed in array
         let inputs = Matrix.fromArray(inputsArray);
@@ -53,7 +58,11 @@ class NeuralNetwork {
         return output;
     }
 
-    train(inputs, answer) {
+    train(inputs, targets) {
+        let output = this.feedForward(inputs);
+
+        // Calculate the error
+        let error = Matrix.subtract(targets, output);
 
     }
 }
