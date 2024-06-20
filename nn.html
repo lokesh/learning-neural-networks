@@ -11,15 +11,13 @@
         import Matrix from './Matrix.js';
         import NeuralNetwork from './NeuralNetwork.js';
 
-        let nn = new NeuralNetwork(2, 2, 1);
-
-        let inputs = [3, 1];
-
-        let output = nn.feedForward(inputs);
-
+        let nn = new NeuralNetwork(2, 2, 2);
+        let inputs = [1, 0];
+        let targets = [1, 0];
+        // let output = nn.feedForward(inputs);
         // console.log('OUTPUT');
         // logData(output);
-
+        nn.train(inputs, targets);
 
         function logData(m) {
             // console.log(JSON.stringify(m.matrix));

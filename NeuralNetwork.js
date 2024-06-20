@@ -77,11 +77,28 @@ class NeuralNetwork {
     }
 
     train(inputs, targets) {
-        let output = this.feedForward(inputs);
-
+        let outputs = this.feedForward(inputs);
+        // outputs = Matrix.fromArray(outputs);
+        targets = Matrix.fromArray(targets);
+        // console.log(outputs);
+        // console.log(targets);
+        // console.log(output.data);
         // Calculate the error
-        let error = Matrix.subtract(targets, output);
+        let error = Matrix.subtract(targets, outputs);
+          
+        
+        let transposedWeightsHO = Matrix.transpose(this.weightsHO)
+        let errorH = Matrix.mult(transposedWeightsHO, error);
+        
 
+        // console.table(outputs.data);
+        // console.table(targets.data);
+        console.table(error.data);
+        console.table(this.weightsHO.data);
+        console.table(errorH.data);
+
+
+        
     }
 
    /**

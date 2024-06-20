@@ -52,7 +52,7 @@ class Matrix {
         } else {
           return this.map(e => e + n);
         }
-      }
+    }
   
  
     /**
@@ -83,6 +83,23 @@ class Matrix {
             m.data[i][0] = arr[i];
         }
         return m;
+    }
+
+    /**
+     * element wise addition
+     * @param {Number|Matrix} n 
+     * @returns 
+     */
+    static subtract(a, b) {
+        let result = new Matrix(a.rows, a.cols);
+        
+        for (let i = 0; i < a.rows; i++) {
+            for (let j = 0; j < a.cols; j++) {
+                result.data[i][j] = a.data[i][j] - b.data[i][j]
+            }
+        }
+
+        return result;
     }
 
     /**
