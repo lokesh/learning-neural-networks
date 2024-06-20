@@ -36,19 +36,7 @@ class Matrix {
             }
         }   
     }
-
-    /**
-     * element wise addition
-     * @param {Number} n 
-     */
-    // add(n) {
-    //     for (let i = 0; i < this.rows; i++) {
-    //         for (let j = 0; j < this.cols; j++) {
-    //             this.data[i][j] += n;
-    //         }
-    //     }
-    // }    
-
+ 
     /**
      * element wise addition
      * @param {Number|Matrix} n 
