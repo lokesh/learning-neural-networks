@@ -29,6 +29,24 @@ class Matrix {
         }   
     }
 
+    /**
+         * Function runs against each value in the matrix.
+         * Receives three args:
+         * 1. {*} value
+         * 2. {Number} row
+         * 3. {Number} col
+         * @param {*} fn 
+         */
+    static map(a, fn) {
+        let result = new Matrix(a.rows, a.cols)
+        for (let i = 0; i < matrix.rows; i++) {
+            for (let j = 0; j < matrix.cols; j++) {
+                result.data[i][j] = fn(a.data[i][j], i, j);
+            }
+        }
+        return result;   
+    }
+
     randomize(min = -1, max = 1) {
         for (let i = 0; i < this.rows; i++) {
             for (let j = 0; j < this.cols; j++) {
@@ -100,6 +118,26 @@ class Matrix {
         }
 
         return result;
+    }
+
+
+    /**
+    * CONFIRM THIS MATH IS CORRECT 
+    * Dot product multiplication
+     * @param {Matrix} m 
+     * @param {Matrix} m2 
+     * @returns Matrix
+     */
+    mult(m) {
+        for (let i = 0; i < this.rows; i++) {
+            for (let j = 0; j < m.cols; j++) {
+                let sum = 0;
+                for (let k = 0; k < m.cols; k++) {
+                    sum += this.data[i][k] * m.data[k][j];
+                }
+                this.data[i][j] = sum;                    
+            }
+        }            
     }
 
     /**

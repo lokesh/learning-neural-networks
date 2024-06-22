@@ -12,12 +12,16 @@ function sigmoid(x) {
 
 /**
  * Derivative of the sigmoid function.
- * @param {Number} x 
+ * @param {Number} y 
  * @returns {Number}
  */
-function dsigmoid(x) {
-    return x * (1 - x);
+function dsigmoid(y) {
+    return y * (1 - y);
 }
+
+// function dsigmoid(x) {
+//     return sigmoid(x) * (1 -sigmoid(x));
+// }
 
 
 class NeuralNetwork {
@@ -28,7 +32,7 @@ class NeuralNetwork {
      * @param {number} outputNodeCount - Number of output nodes
      */
     constructor(inputNodeCount, hiddenNodeCount, outputNodeCount) {
-        this.learningRate = 0.1;  // Default learning rate
+        this.learningRate = 0.01;  // Default learning rate
 
         this.inputNodeCount = inputNodeCount;
         this.hiddenNodeCount = hiddenNodeCount;
@@ -76,26 +80,44 @@ class NeuralNetwork {
         return output;
     }
 
-    train(inputs, targets) {
-        let outputs = this.feedForward(inputs);
-        // outputs = Matrix.fromArray(outputs);
+    train(inputsArray, targets) {
+        let inputs = Matrix.fromArray(inputsArray);
+        let hidden = Matrix.mult(this.weightsIH, inputs);
+        hidden.add(this.biasH);                
+        hidden.map(sigmoid);
+
+        // Repeat for the next layer
+        let outputs = Matrix.mult(this.weightsHO, hidden);
+        outputs.add(this.biasO);
+        outputs.map(sigmoid); 
+
+
+
         targets = Matrix.fromArray(targets);
-        // console.log(outputs);
-        // console.log(targets);
-        // console.log(output.data);
-        // Calculate the error
-        let error = Matrix.subtract(targets, outputs);
-          
+        let outputErrors = Matrix.subtract(targets, outputs);
         
+        // Calc gradient
+        let gradients = Matrix.map(outputs, dsigmoid);
+        gradients = Matrix.mult(gradients, outputErrors);
+        gradients.scalarMult(this.learningRate); 
+
+
+
+        // Calculate deltas
         let transposedWeightsHO = Matrix.transpose(this.weightsHO)
-        let errorH = Matrix.mult(transposedWeightsHO, error);
+        let weightsHODelta = Matrix.mult(gradients, transposedWeightsHO);
+
+        // let hiddenErrors = Matrix.mult(transposedWeightsHO, outputErrors);
         
 
         // console.table(outputs.data);
         // console.table(targets.data);
-        console.table(error.data);
-        console.table(this.weightsHO.data);
-        console.table(errorH.data);
+        // console.table(outputErrors.data);
+        // console.table(this.weightsHO.data);
+
+        this.weightsHO.add(weightsHODelta)
+
+        // console.table(hiddenErrors.data);
 
 
         
