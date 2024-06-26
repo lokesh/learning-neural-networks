@@ -39,8 +39,8 @@ class Matrix {
          */
     static map(a, fn) {
         let result = new Matrix(a.rows, a.cols)
-        for (let i = 0; i < matrix.rows; i++) {
-            for (let j = 0; j < matrix.cols; j++) {
+        for (let i = 0; i < a.rows; i++) {
+            for (let j = 0; j < a.cols; j++) {
                 result.data[i][j] = fn(a.data[i][j], i, j);
             }
         }

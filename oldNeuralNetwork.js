@@ -1,4 +1,4 @@
-import Matrix from './Matrix.js';
+import Matrix from './oldMatrix.js';
 
 /**
  * Sigmoid activation function.
@@ -80,6 +80,11 @@ class NeuralNetwork {
         return output;
     }
 
+    /**
+     * Trains the neural network by adjusting the weights and biases based on the inputs and targets.
+     * @param {number[]} inputsArray - The array of input values.
+     * @param {number[]} targets - The array of target values.
+     */
     train(inputsArray, targets) {
         let inputs = Matrix.fromArray(inputsArray);
         let hidden = Matrix.mult(this.weightsIH, inputs);
@@ -91,8 +96,6 @@ class NeuralNetwork {
         outputs.add(this.biasO);
         outputs.map(sigmoid); 
 
-
-
         targets = Matrix.fromArray(targets);
         let outputErrors = Matrix.subtract(targets, outputs);
         
@@ -100,7 +103,6 @@ class NeuralNetwork {
         let gradients = Matrix.map(outputs, dsigmoid);
         gradients = Matrix.mult(gradients, outputErrors);
         gradients.scalarMult(this.learningRate); 
-
 
 
         // Calculate deltas
