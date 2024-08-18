@@ -7,10 +7,11 @@
 </head>
 <body>
     <h1>Check the console for output</h1>
-    <script type="module">
-        import Matrix from './Matrix.js';
-        import NeuralNetwork from './NeuralNetwork.js';
 
+    <script src="../lib/nn.js"></script>
+	<script src="../lib/matrix.js"></script>
+
+<script type="module">
         let nn = new NeuralNetwork(2, 2, 2);
         let inputs = [1, 0];
         let targets = [1, 0];

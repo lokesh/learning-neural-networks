@@ -1,21 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.js"></script>
-    <script src="../lib/matrix.js"></script>
-    <script src="../lib/nn.js"></script>
-    
-    <meta charset="utf-8" />
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <style>
-      body { padding: 0; margin: 0; font-family: monospace; }
-    </style>
-  </head>
-  <body>
-    <main>
-      doodles.html<br />
-      Check console
-    </main>
-    <script src="doodles.js"></script>
-  </body>
+	<title>doodle classifier</title>
+
+  <script src="../lib/p5.min.js"></script>
+  <script src="../lib/p5.dom.min.js"></script>
+	<script src="../lib/loadbinary.js"></script>
+	<script src="traintest.js"></script>
+	<script src="dataprep.js"></script>
+	<script src="doodles.js"></script>
+	<script src="../lib/nn.js"></script>
+	<script src="../lib/matrix.js"></script>
+	<style>
+	body {
+		background-color: #AAA;
+	}
+	button {
+		font-size: 24pt;
+		margin: 10px;
+	}
+	</style>
+</head>
+<body>
+	<button id="train">train</button>
+	<button id="test">test</button>
+	<button id="guess">guess</button>
+	<button id="clear">clear</button>
+</body>
 </html>
